@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Billionaire List</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  <!-- :favicon.ico error fix -->
+  <!-- found on: https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error -->
+  <link rel="shortcut icon" href="#" />
+</head>
+
+<!-- Head Image -->
+  <div class="container-xxl">
+    <div class="row">
+      <div id= "header" class="col-md-12 jumbotron text-center">
+        <h1> &ensp; Forbes Billionaire<br> &ensp; &emsp; &nbsp;List - 2021</h1>
+        <h4 class="ml2"> &emsp;&emsp;&emsp;&emsp; Use the interactive charts below to explore the dataset</h3>
+      </div>
+    </div>
+  </div>
+<!-- Head Image End -->
+<!-- Dropdown -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="well">
+          <h5>Name:</h5>
+          <select id="selDataset" onchange="dropdownChanged(this.value)"></select>
+          <!-- HW example to link graphs to dropdown: -->
+          <!-- 15-Interactive-Visualizations-and-Dashboard -->
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="location.reload()"><span>Reset</span></button>
+      </div>
+    </div>
+  </div>
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- First graph - Globe -->
+        <div class="col-lg-6">
+          <div id="earth_div"></div>
+        </div>
+
+        <!-- Second graph - plotly graph -->
+        <div class="col-lg-6">
+          <div id="plotly"></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html"></a>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="Billionaire">
+      <!--<h1>Billionaire</h1>-->
+      <p></p>
+    </div>
+    <div class="container">
+      <div class="row margin-top-50">
+        <div class="col-md-2">
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <form id="form">
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                        <li class="filter list-group-item" id="formOne">
+                          <label for="date">Enter a Name</label>
+                          <input class="form-control" id="name-filter" type="text" placeholder="Elon Musk" onchange="tableChanged(this.value)">
+                        </li>
+                        <li class="filter list-group-item">
+                          <label for="date">Enter a Country</label>
+                          <input class="form-control" id="country-filter" type="text" placeholder="United States" onchange="countryChanged(this.value)">
+                        </li>
+                        <li class="filter list-group-item">
+                          <label for="date">Enter a Rank (Closest Rank Will Be Given)</label>
+                          <input class="form-control" id="rank-filter" type="text" placeholder="2" onchange="rankChanged(this.value)">
+                        </li>
+                      
+                        </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-2">
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="location.reload()"><span>Reset</span></button>
+                  </div>
+                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                </form>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="col-md-10">
+          <div id="table-area" class="">
+            <table id="Billionaire-table" class="table table-striped ">
+              <thead>
+                <tr>
+                  <th class="table-head">Country</th>
+                  <th class="table-head">Name</th>
+                  <th class="table-head">NetWorth</th>
+                  <th class="table-head">Rank</th>
+                  <th class="table-head">Source</th>
+                  <th class="table-head">latitude</th>
+                  <th class="table-head">longitude</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imports -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+  <!-- webGLearth JS library -->
+  <script src="http://www.webglearth.com/v2/api.js"></script>
+  <!-- API key -->
+  <script type="text/javascript" src="../static/js/config.js"></script>
+  <!-- D3 JS-->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- anime JS library  (not taught in class)-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <!-- JS file -->
+  <script src="../static/js/logic.js"></script>
+
+</body>
+
+</html>
