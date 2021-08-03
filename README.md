@@ -1,5 +1,7 @@
 # billionaire-project
-Repository 2 of billionaire-project. This repo was cloned from `https://github.com/mpetersen49/billionaire-project` in order to host the project to Heroku.
+Repository 2 of billionaire-project. This repo was cloned from [Mike Peterson's Repository](https://github.com/mpetersen49/billionaire-project) in order to host the project to Heroku.
+
+You can [view the website](https://billionaire-project.herokuapp.com/) hosted by Heroku or follow the instructions below.
 
 # billionaire-project
 
