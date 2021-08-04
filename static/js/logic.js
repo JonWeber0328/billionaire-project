@@ -269,11 +269,11 @@ function loadGlobeDropdown(newName) {
 
     d3.csv("static/data/merged_data.csv").then(data => {
 
-        var resultArray = data.filter(s => s.Name == newName);
-        var country = resultArray[0].Country;
-        var netWorth = resultArray[0].NetWorth;
-        var rank = resultArray[0].Rank;
-        var source = resultArray[0].Source;
+        var resultArray = data.filter(s => s.name == newName);
+        var country = resultArray[0].country;
+        var netWorth = resultArray[0].networth;
+        var rank = resultArray[0].rank;
+        var source = resultArray[0].source;
         var lat = resultArray[0].latitude;
         var lng = resultArray[0].longitude;
         // var newName = resultArray[0].Name;
@@ -317,14 +317,14 @@ function loadGraphDropdown(newName) {
         }
         else {
             var plotData = data.filter(obj => {
-                return obj.Country === selectedCountry
+                return obj.country === selectedCountry
             });
 
         }
 
         // sort billionaires by networth descending
         plotData.sort(function (a, b) {
-            return b.NetWorth - a.NetWorth;
+            return b.networth - a.networth;
         });
         // console.log(plotData);
 
@@ -337,7 +337,7 @@ function loadGraphDropdown(newName) {
         // loop through all rows of data
         for (var i = 0; i < plotData.length; i++) {
             // looking for the billionaire that was selected via filter
-            if (plotData[i].Name === selectedName) {
+            if (plotData[i].name === selectedName) {
                 // add 20 billionaires to list. doing it in differently depending on if it is a top 20 or bottom 20 billionaire
                 if (i > 19 && i < (plotData.length - 19)) {
                     plotColors = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'red', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue']
@@ -345,11 +345,11 @@ function loadGraphDropdown(newName) {
 
                     for (j; j < i; j++) {
 
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth);
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name);
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
                     }
 
@@ -358,11 +358,11 @@ function loadGraphDropdown(newName) {
 
                     for (k; k < last; k++) {
 
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
                     }
                 }
@@ -371,11 +371,11 @@ function loadGraphDropdown(newName) {
 
                     for (var j = 0; j < 20; j++) {
                         plotColors[i] = 'red'
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name)
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
 
                     }
@@ -384,11 +384,11 @@ function loadGraphDropdown(newName) {
                 else if (i > (plotData.length - 20)) {
                     for (var k = (plotData.length - 20); k < plotData.length; k++) {
                         plotColors[i - plotData.length + 20] = 'red'
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
 
                     }
@@ -459,7 +459,7 @@ function loadChartDropdown(newName) {
     document.getElementById("tbody").innerHTML = '';
 
     d3.csv("static/data/merged_data.csv").then(data => {
-        var nameFiltered = data.filter(obj => obj.Name == newName);
+        var nameFiltered = data.filter(obj => obj.name == newName);
 
         // console.log(nameFiltered);
         var tbody = d3.select("tbody");
@@ -499,11 +499,11 @@ function loadGlobeTable(tableName) {
 
     d3.csv("static/data/merged_data.csv").then(data => {
 
-        var resultArray = data.filter(s => s.Name == tableName);
-        var country = resultArray[0].Country;
-        var netWorth = resultArray[0].NetWorth;
-        var rank = resultArray[0].Rank;
-        var source = resultArray[0].Source;
+        var resultArray = data.filter(s => s.name == tableName);
+        var country = resultArray[0].country;
+        var netWorth = resultArray[0].networth;
+        var rank = resultArray[0].rank;
+        var source = resultArray[0].source;
         var lat = resultArray[0].latitude;
         var lng = resultArray[0].longitude;
         // var newName = resultArray[0].Name;
@@ -547,14 +547,14 @@ function loadGraphTable(tableName) {
         }
         else {
             var plotData = data.filter(obj => {
-                return obj.Country === selectedCountry
+                return obj.country === selectedCountry
             });
 
         }
 
         // sort billionaires by networth descending
         plotData.sort(function (a, b) {
-            return b.NetWorth - a.NetWorth;
+            return b.networth - a.networth;
         });
         // console.log(plotData);
 
@@ -567,7 +567,7 @@ function loadGraphTable(tableName) {
         // loop through all rows of data
         for (var i = 0; i < plotData.length; i++) {
             // looking for the billionaire that was selected via filter
-            if (plotData[i].Name === selectedName) {
+            if (plotData[i].name === selectedName) {
                 // add 20 billionaires to list. doing it in differently depending on if it is a top 20 or bottom 20 billionaire
                 if (i > 19 && i < (plotData.length - 19)) {
                     plotColors = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'red', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue']
@@ -575,11 +575,11 @@ function loadGraphTable(tableName) {
 
                     for (j; j < i; j++) {
 
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth);
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name);
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
                     }
 
@@ -588,11 +588,11 @@ function loadGraphTable(tableName) {
 
                     for (k; k < last; k++) {
 
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
                     }
                 }
@@ -601,11 +601,11 @@ function loadGraphTable(tableName) {
 
                     for (var j = 0; j < 20; j++) {
                         plotColors[i] = 'red'
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name)
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
 
                     }
@@ -614,11 +614,11 @@ function loadGraphTable(tableName) {
                 else if (i > (plotData.length - 20)) {
                     for (var k = (plotData.length - 20); k < plotData.length; k++) {
                         plotColors[i - plotData.length + 20] = 'red'
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
 
                     }
@@ -689,7 +689,7 @@ function loadChartTable(tableName) {
     document.getElementById("tbody").innerHTML = '';
 
     d3.csv("static/data/merged_data.csv").then(data => {
-        var nameFiltered = data.filter(obj => obj.Name === tableName);
+        var nameFiltered = data.filter(obj => obj.name === tableName);
 
         // console.log(nameFiltered);
         var tbody = d3.select("tbody");
