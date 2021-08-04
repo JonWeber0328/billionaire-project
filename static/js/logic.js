@@ -52,8 +52,8 @@ function initialDashboard() {
         
         // Loop through data file
         for (var i = 0; i < data.length; i++) {
-            var country = data[i].Country;
-            var name = data[i].Name;
+            var country = data[i].country;
+            var name = data[i].name;
             var lat = data[i].latitude;
             var lng = data[i].longitude;            
             
@@ -90,14 +90,14 @@ function initialDashboard() {
         }
         else {
             var plotData = data.filter(obj => {
-                return obj.Country === selectedCountry
+                return obj.country === selectedCountry
             });
 
         }
 
         // sort billionaires by networth descending
         plotData.sort(function (a, b) {
-            return b.NetWorth - a.NetWorth;
+            return b.networth - a.networth;
         });
         // console.log(plotData);
 
@@ -110,7 +110,7 @@ function initialDashboard() {
         // loop through all rows of data
         for (var i = 0; i < plotData.length; i++) {
             // looking for the billionaire that was selected via filter
-            if (plotData[i].Name === selectedName) {
+            if (plotData[i].name === selectedName) {
                 // add 20 billionaires to list. doing it in differently depending on if it is a top 20 or bottom 20 billionaire
                 if (i > 19 && i < (plotData.length - 19)) {
                     plotColors = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'red', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue']
@@ -118,11 +118,11 @@ function initialDashboard() {
 
                     for (j; j < i; j++) {
 
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth);
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name);
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
                     }
 
@@ -131,11 +131,11 @@ function initialDashboard() {
 
                     for (k; k < last; k++) {
 
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
                     }
                 }
@@ -144,11 +144,11 @@ function initialDashboard() {
 
                     for (var j = 0; j < 20; j++) {
                         plotColors[i] = 'red'
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name)
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
 
                     }
@@ -157,11 +157,11 @@ function initialDashboard() {
                 else if (i > (plotData.length - 20)) {
                     for (var k = (plotData.length - 20); k < plotData.length; k++) {
                         plotColors[i - plotData.length + 20] = 'red'
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
 
                     }
