@@ -998,14 +998,14 @@ function loadGraphCountry(tableCountry) {
         }
         else {
             var plotData = data.filter(obj => {
-                return obj.Country === selectedCountry
+                return obj.country === selectedCountry
             });
 
         }
 
         // sort billionaires by networth descending
         plotData.sort(function (a, b) {
-            return b.NetWorth - a.NetWorth;
+            return b.networth - a.networth;
         });
         // console.log(plotData);
 
@@ -1018,7 +1018,7 @@ function loadGraphCountry(tableCountry) {
         // loop through all rows of data
         for (var i = 0; i < 20; i++) {
             try {
-                var netWorth = plotData[i].NetWorth;
+                var netWorth = plotData[i].networth;
             }
             catch {
                 console.log('Net worth undefined')
@@ -1027,9 +1027,9 @@ function loadGraphCountry(tableCountry) {
 
             if (netWorth != "") {
                 plotNetWorths.push(netWorth);
-                var name = plotData[i].Name;
+                var name = plotData[i].name;
                 plotNames.push(name);
-                var text = plotData[i].Source;
+                var text = plotData[i].source;
                 plotText.push(text);
             }
             else {
@@ -1104,7 +1104,7 @@ function loadGlobeCountry(tableCountry) {
     var countryFrequency = {};
     d3.csv("static/data/merged_data.csv").then(data => {
 
-        var resultArray = data.filter(s => s.Country == tableCountry);
+        var resultArray = data.filter(s => s.country == tableCountry);
         var lat = resultArray[0].latitude;
         var lng = resultArray[0].longitude;
         
@@ -1141,7 +1141,7 @@ function loadChartCountry(tableCountry) {
     document.getElementById("tbody").innerHTML = '';
 
     d3.csv("static/data/merged_data.csv").then(data => {
-        var nameFiltered = data.filter(obj => obj.Country === tableCountry);
+        var nameFiltered = data.filter(obj => obj.country === tableCountry);
 
         // console.log(nameFiltered);
         var tbody = d3.select("tbody");
@@ -1178,14 +1178,14 @@ function loadGraphCountry(tableCountry) {
         }
         else {
             var plotData = data.filter(obj => {
-                return obj.Country === selectedCountry
+                return obj.country === selectedCountry
             });
 
         }
 
         // sort billionaires by networth descending
         plotData.sort(function (a, b) {
-            return b.NetWorth - a.NetWorth;
+            return b.networth - a.networth;
         });
         // console.log(plotData);
 
@@ -1198,7 +1198,7 @@ function loadGraphCountry(tableCountry) {
         // loop through all rows of data
         for (var i = 0; i < 20; i++) {
             try {
-                var netWorth = plotData[i].NetWorth;
+                var netWorth = plotData[i].networth;
             }
             catch {
                 console.log('Net worth undefined')
@@ -1207,9 +1207,9 @@ function loadGraphCountry(tableCountry) {
 
             if (netWorth != "") {
                 plotNetWorths.push(netWorth);
-                var name = plotData[i].Name;
+                var name = plotData[i].name;
                 plotNames.push(name);
-                var text = plotData[i].Source;
+                var text = plotData[i].source;
                 plotText.push(text);
             }
             else {
