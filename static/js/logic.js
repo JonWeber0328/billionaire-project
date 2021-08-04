@@ -44,7 +44,7 @@ function initialDashboard() {
     }).addTo(myMap);
 
     var selector = d3.select("#selDataset");
-    d3.json("/data").then(function (data, err) {
+    d3.csv("static/data/merged_data.csv").then(function (data, err) {
         if (err) throw err;
         
         console.log(data);
@@ -267,7 +267,7 @@ function loadGlobeDropdown(newName) {
     // Clear content of "earth_div"
     document.getElementById("earth_div").innerHTML = '';
 
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         var resultArray = data.filter(s => s.Name == newName);
         var country = resultArray[0].Country;
@@ -309,7 +309,7 @@ function loadGraphDropdown(newName) {
     // Select a country & name
     var selectedCountry = "";
     var selectedName = newName;
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         // filter based on selected country only if filter has been applied
         if (selectedCountry === "") {
@@ -458,7 +458,7 @@ function loadChartDropdown(newName) {
 
     document.getElementById("tbody").innerHTML = '';
 
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
         var nameFiltered = data.filter(obj => obj.Name == newName);
 
         // console.log(nameFiltered);
@@ -497,7 +497,7 @@ function loadGlobeTable(tableName) {
     // Clear content of "earth_div"
     document.getElementById("earth_div").innerHTML = '';
 
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         var resultArray = data.filter(s => s.Name == tableName);
         var country = resultArray[0].Country;
@@ -539,7 +539,7 @@ function loadGraphTable(tableName) {
     // Select a country & name
     var selectedCountry = "";
     var selectedName = tableName;
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         // filter based on selected country only if filter has been applied
         if (selectedCountry === "") {
@@ -688,7 +688,7 @@ function loadChartTable(tableName) {
 
     document.getElementById("tbody").innerHTML = '';
 
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
         var nameFiltered = data.filter(obj => obj.Name === tableName);
 
         // console.log(nameFiltered);
@@ -728,7 +728,7 @@ function loadGlobeRank(tableRank) {
     // Clear content of "earth_div"
     document.getElementById("earth_div").innerHTML = '';
     
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
         let result = data.map(a => a.Rank);
 
         // Find closest rank in data
@@ -781,7 +781,7 @@ function loadGraphRank(tableRank) {
     
     // var selectedName = tableName;  // <----------------
     
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
         let result = data.map(a => a.Rank);
 
         // Find closest rank in data
@@ -943,7 +943,7 @@ function loadChartRank(tableRank) {
     var integer = parseInt(tableRank, 10);
     document.getElementById("tbody").innerHTML = '';
 
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         let result = data.map(a => a.Rank);
 
@@ -990,7 +990,7 @@ function loadGraphCountry(tableCountry) {
     // console.log(newName);
     // Select a country & name
     var selectedCountry = tableCountry;
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         // filter based on selected country only if filter has been applied
         if (selectedCountry === "") {
@@ -1102,7 +1102,7 @@ function loadGlobeCountry(tableCountry) {
     document.getElementById("earth_div").innerHTML = '';
 
     var countryFrequency = {};
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         var resultArray = data.filter(s => s.Country == tableCountry);
         var lat = resultArray[0].latitude;
@@ -1140,7 +1140,7 @@ function loadChartCountry(tableCountry) {
     
     document.getElementById("tbody").innerHTML = '';
 
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
         var nameFiltered = data.filter(obj => obj.Country === tableCountry);
 
         // console.log(nameFiltered);
@@ -1170,7 +1170,7 @@ function loadGraphCountry(tableCountry) {
     // console.log(newName);
     // Select a country & name
     var selectedCountry = tableCountry;
-    d3.json("/data").then(data => {
+    d3.csv("static/data/merged_data.csv").then(data => {
 
         // filter based on selected country only if filter has been applied
         if (selectedCountry === "") {
