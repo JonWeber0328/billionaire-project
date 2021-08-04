@@ -729,7 +729,7 @@ function loadGlobeRank(tableRank) {
     document.getElementById("earth_div").innerHTML = '';
     
     d3.csv("static/data/merged_data.csv").then(data => {
-        let result = data.map(a => a.Rank);
+        let result = data.map(a => a.rank);
 
         // Find closest rank in data
         // Found on: https://stackoverflow.com/questions/8584902/get-the-closest-number-out-of-an-array
@@ -738,14 +738,14 @@ function loadGlobeRank(tableRank) {
         });
         console.log(closest);
         
-        var resultArray = data.filter(s => s.Rank == closest);
-        var country = resultArray[0].Country;
-        var netWorth = resultArray[0].NetWorth;
-        var rank = resultArray[0].Rank;
-        var source = resultArray[0].Source;
+        var resultArray = data.filter(s => s.rank == closest);
+        var country = resultArray[0].country;
+        var netWorth = resultArray[0].networth;
+        var rank = resultArray[0].rank;
+        var source = resultArray[0].source;
         var lat = resultArray[0].latitude;
         var lng = resultArray[0].longitude;
-        var name = resultArray[0].Name;
+        var name = resultArray[0].name;
         console.log(result);
         // Add the map variable for our globe
         var myMap = WE.map("earth_div", {
@@ -782,7 +782,7 @@ function loadGraphRank(tableRank) {
     // var selectedName = tableName;  // <----------------
     
     d3.csv("static/data/merged_data.csv").then(data => {
-        let result = data.map(a => a.Rank);
+        let result = data.map(a => a.rank);
 
         // Find closest rank in data
         // Found on: https://stackoverflow.com/questions/8584902/get-the-closest-number-out-of-an-array
@@ -790,8 +790,8 @@ function loadGraphRank(tableRank) {
             return (Math.abs(curr - integer) < Math.abs(prev - integer) ? curr : prev);
         });
         
-        var resultArray2 = data.filter(s => s.Rank == closest);
-        var name2 = resultArray2[0].Name;
+        var resultArray2 = data.filter(s => s.rank == closest);
+        var name2 = resultArray2[0].name;
         var selectedName = name2;
 
 
@@ -801,14 +801,14 @@ function loadGraphRank(tableRank) {
         }
         else {
             var plotData = data.filter(obj => {
-                return obj.Country === selectedCountry
+                return obj.country === selectedCountry
             });
 
         }
 
         // sort billionaires by networth descending
         plotData.sort(function (a, b) {
-            return b.NetWorth - a.NetWorth;
+            return b.networth - a.networth;
         });
         // console.log(plotData);
 
@@ -821,7 +821,7 @@ function loadGraphRank(tableRank) {
         // loop through all rows of data
         for (var i = 0; i < plotData.length; i++) {
             // looking for the billionaire that was selected via filter
-            if (plotData[i].Name === selectedName) {
+            if (plotData[i].name === selectedName) {
                 // add 20 billionaires to list. doing it in differently depending on if it is a top 20 or bottom 20 billionaire
                 if (i > 19 && i < (plotData.length - 19)) {
                     plotColors = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'red', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue']
@@ -829,11 +829,11 @@ function loadGraphRank(tableRank) {
 
                     for (j; j < i; j++) {
 
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth);
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name);
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
                     }
 
@@ -842,11 +842,11 @@ function loadGraphRank(tableRank) {
 
                     for (k; k < last; k++) {
 
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
                     }
                 }
@@ -855,11 +855,11 @@ function loadGraphRank(tableRank) {
 
                     for (var j = 0; j < 20; j++) {
                         plotColors[i] = 'red'
-                        var netWorth = plotData[j].NetWorth;
+                        var netWorth = plotData[j].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[j].Name;
+                        var name = plotData[j].name;
                         plotNames.push(name)
-                        var text = plotData[j].Source;
+                        var text = plotData[j].source;
                         plotText.push(text);
 
                     }
@@ -868,11 +868,11 @@ function loadGraphRank(tableRank) {
                 else if (i > (plotData.length - 20)) {
                     for (var k = (plotData.length - 20); k < plotData.length; k++) {
                         plotColors[i - plotData.length + 20] = 'red'
-                        var netWorth = plotData[k].NetWorth;
+                        var netWorth = plotData[k].networth;
                         plotNetWorths.push(netWorth)
-                        var name = plotData[k].Name;
+                        var name = plotData[k].name;
                         plotNames.push(name)
-                        var text = plotData[k].Source;
+                        var text = plotData[k].source;
                         plotText.push(text);
 
                     }
@@ -945,7 +945,7 @@ function loadChartRank(tableRank) {
 
     d3.csv("static/data/merged_data.csv").then(data => {
 
-        let result = data.map(a => a.Rank);
+        let result = data.map(a => a.rank);
 
         // Find closest rank in data
         // Found on: https://stackoverflow.com/questions/8584902/get-the-closest-number-out-of-an-array
@@ -954,7 +954,7 @@ function loadChartRank(tableRank) {
         });
         console.log(closest);
 
-        var nameFiltered = data.filter(obj => obj.Rank === closest);
+        var nameFiltered = data.filter(obj => obj.rank === closest);
 
         // console.log(nameFiltered);
         var tbody = d3.select("tbody");
